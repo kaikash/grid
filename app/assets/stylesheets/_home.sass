@@ -1,0 +1,45 @@
+$padding: 16px
+$grid-columns: 12
+$max-width: 1200px
+
+html
+  font: Arial 14px
+
+*
+  padding: 0
+  margin: 0
+
+.row
+  max-width: $max-width
+  margin: 0 auto
+  box-sizing: border-box
+  &:after
+    visibility: hidden
+    display: block
+    font-size: 0
+    content: " "
+    clear: both
+    height: 0
+
+.column
+  box-sizing: border-box
+  padding: 0 $padding
+  float: left
+  border: 1px solid #000
+  text-align: center
+.column.column
+  padding: 0
+
+@for $i from 1 to $grid-columns+1
+  .small-#{$i}
+    width: 100%/$grid-columns*$i
+
+@media (min-width: 641px) and (max-width: 1024px)  
+  @for $i from 1 to $grid-columns+1
+    .medium-#{$i}
+      width: 100%/$grid-columns*$i
+
+@media (min-width: 1025px)
+  @for $i from 1 to $grid-columns+1
+    .large-#{$i}
+      width: 100%/$grid-columns*$i
